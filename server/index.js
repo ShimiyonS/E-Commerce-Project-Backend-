@@ -11,10 +11,13 @@ dotenv.config();
 const PORT = process.env.PORT || 8000;
 const app = express();
 app.use(express.json());
-//
+
 
 app.use(cors());
+// DataBase Connectioins
 MongoConnect();
+
+//App initional Running
 app.get('/', (req,res)=>{
     res.send('<h1>Welcome to node server</h1>')
 })
