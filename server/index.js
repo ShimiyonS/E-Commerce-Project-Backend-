@@ -20,7 +20,7 @@ app.get('/', (req,res)=>{
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`)); 
 
-
+//api requests
 app.use("/api", productRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/orders", orderRoutes);
