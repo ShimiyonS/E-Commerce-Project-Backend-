@@ -1,6 +1,15 @@
 import asyncHandler from "express-async-handler";
 import Order from "../models/OrderModel.js";
 
+const getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find();
+    res.status(200).json(orders);
+  } catch (error) {
+    console.log(error)
+    res.status(500).json("error")
+  }
+};
 const addOrderItem = asyncHandler(async (req, res) => {
   const {
     orderItems,
@@ -71,4 +80,4 @@ const getMyOrders = asyncHandler(async (req, res) => {
   res.json(orders);
 });
 
-export { addOrderItem, getOrderById, updateOrderToPaid, getMyOrders };
+export { addOrderItem, getOrderById, updateOrderToPaid, getMyOrders, getAllOrders };

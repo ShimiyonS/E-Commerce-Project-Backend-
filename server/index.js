@@ -8,14 +8,14 @@ import orderRoutes from "./routes/orderRoute.js";
 import { errorHandler } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(express.json());
 
 
 app.use(cors());
 // DataBase Connectioins
-MongoConnect();
+MongoConnect()
 
 //App initional Running
 app.get('/', (req,res)=>{
