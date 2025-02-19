@@ -6,38 +6,42 @@ const getAllOrders = async (req, res) => {
     const orders = await Order.find();
     res.status(200).json(orders);
   } catch (error) {
-    console.log(error)
-    res.status(500).json("error")
+    console.log(error);
+    res.status(500).json("error");
   }
 };
 const addOrderItem = asyncHandler(async (req, res) => {
-  const {
-    orderItems,
-    shippingAddress,
-    paymentMethod,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
-  } = req.body;
-  if (orderItems && orderItems.length === 0) {
-    res.status(400);
-    throw new Error("No Order Found");
-    return;
-  } else {
-    const order = new Order({
+  try {
+    const {
       orderItems,
-      user: req.user._id,
       shippingAddress,
       paymentMethod,
       itemsPrice,
       taxPrice,
       shippingPrice,
       totalPrice,
-    });
+    } = req.body;
+    if (orderItems && orderItems.length === 0) {
+      res.status(400);
+      throw new Error("No Order Found");
+      return;
+    } else {
+      const order = new Order({
+        orderItems,
+        user: req.user._id,
+        shippingAddress,
+        paymentMethod,
+        itemsPrice,
+        taxPrice,
+        shippingPrice,
+        totalPrice,
+      });
 
-    const createOrder = await order.save();
-    res.status(201).json(createOrder);
+      const createOrder = await order.save();
+      res.status(201).json(createOrder);
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
@@ -80,4 +84,10 @@ const getMyOrders = asyncHandler(async (req, res) => {
   res.json(orders);
 });
 
-export { addOrderItem, getOrderById, updateOrderToPaid, getMyOrders, getAllOrders };
+export {
+  addOrderItem,
+  getOrderById,
+  updateOrderToPaid,
+  getMyOrders,
+  getAllOrders,
+};

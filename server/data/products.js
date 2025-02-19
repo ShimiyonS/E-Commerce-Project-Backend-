@@ -15,7 +15,7 @@ const products = [
     name: "Micromax IN 1b (Purple, 32 GB)",
     image: "/images/micromaxInB.jpg",
     description:
-      "Say hello to the Micromax IN 1b smartphone whose powerful MediaTek Helio G35 gaming processor and a 5000 mAh battery will pave the way for effortless multitasking and usage.",
+      "Say hello to the Micromax IN 1b smartphone whose powerful MediaTek Helio G35 gaming processor and a 8888 mAh battery will pave the way for effortless multitasking and usage.",
     brand: "Micromax",
     category: "Electronics",
     price: 599.99,
@@ -73,4 +73,4 @@ const products = [
   },
 ];
 
-export {products};
+export { products };
